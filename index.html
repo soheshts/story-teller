@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+    <div class="uk-slideshow" id="well">
+        <div id="div1" class="panel">Once upon a time there were two kingdoms that were the worst of neighbors.</div>
+        <div id="div2" class="panel">So vast was the discord between them that it was said only a great hero or a terrible villain might bring them together.</div>
+        <div id="div3" class="panel">In one kingdom lived folk like you and me with a vain and greedy king to rule over them.</div>
+        <div id="div4" class="panel">They were forever discontent and envious of the wealth and beauty of their neighbors. For in the other kingdom, the Moors lived every manner of strange and wonderful creature.</div>
+        <div id="div5" class="panel">And they needed neither king nor queen but trusted in one another. In a great tree on a great cliff in the Moors lived one such spirit. You might take her for a girl. But she was not just any girl, she was a fairy.</div>
+    </div>
+
+</body>
+<script>
+    var position;
+    $(document).ready(function () {
+        console.log("ready");
+        position=1;
+        $('html, body').animate({
+            scrollTop: $("#div1").offset().top
+        }, 1000);
+
+    });
+    $(document).keydown(function (e) {
+        console.log(e.keyCode);
+        console.log("position: " + position);
+        var currentDiv = $("#div"+position);
+             console.log(currentDiv);
+        if (e.which == 38) {
+            console.log("up");
+             
+            $('html, body').animate({
+                scrollTop: $(currentDiv).prev().offset().top
+            }, 1000);
+            position=position-1;
+        }
+        if (e.which == 40) {
+            console.log("down");
+            $('html, body').animate({
+                scrollTop: $(currentDiv).next().offset().top
+            }, 1000);
+            position=position+1;
+        }
+    });
+
+    $(".panel").click(function () {
+        console.log("clicked");
+        $('html, body').animate({
+            scrollTop: $(this).next().offset().top
+        }, 1000);
+    });
+</script>
+
+</html>
